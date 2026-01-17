@@ -1,6 +1,6 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BiCodeAlt } from 'react-icons/bi';
@@ -47,7 +47,7 @@ export default function Navbar() {
     ];
 
     // Animation variants
-    const mobileMenuVariants = {
+    const mobileMenuVariants: Variants = {
         hidden: {
             opacity: 0,
             height: 0,
@@ -67,7 +67,7 @@ export default function Navbar() {
         }
     };
 
-    const menuItemVariants = {
+    const menuItemVariants: Variants = {
         hidden: {
             opacity: 0,
             x: -20
@@ -82,7 +82,7 @@ export default function Navbar() {
         }
     };
 
-    const socialIconVariants = {
+    const socialIconVariants: Variants = {
         hidden: { scale: 0 },
         visible: {
             scale: 1,
