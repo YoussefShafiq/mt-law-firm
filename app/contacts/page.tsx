@@ -101,7 +101,7 @@ export default function Contacts() {
                         {/* Contact Form */}
                         <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
                             <h2 className="text-3xl font-bold mb-6 text-primary">Send Us a Message</h2>
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6 text-primary">
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-bold text-primary mb-2">
                                         Full Name *
