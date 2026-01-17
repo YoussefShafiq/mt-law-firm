@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import PagesHero from '../components/PagesHero';
 import Link from 'next/link';
 import { blogPosts } from './data';
+import MotionWrapper from '../components/MotionWrapper';
 
 export const metadata: Metadata = {
     title: 'Blogs - MT Law Firm',
@@ -20,24 +21,26 @@ export default function Blogs() {
                     <p className="text-slate-600 mb-12 text-lg">Stay tuned for expert legal insights and firm updates.</p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                        {blogPosts.map((post) => (
-                            <Link href={`/blogs/${post.id}`} key={post.id} className="block group h-full">
-                                <div className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 h-full flex flex-col">
-                                    <div className="h-48 bg-slate-200 relative overflow-hidden">
-                                        <img src={post.image} alt={post.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
-                                        <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div>
-                                    </div>
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <div className="text-sm text-slate-600 mb-2 font-semibold flex justify-between">
-                                            <span>{post.category}</span>
-                                            <span className="text-slate-400 font-normal">{post.date}</span>
+                        {blogPosts.map((post, index) => (
+                            <MotionWrapper key={post.id} delay={index * 0.1} className="h-full">
+                                <Link href={`/blogs/${post.id}`} className="block group h-full">
+                                    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-slate-100 hover:shadow-lg transition-all hover:-translate-y-1 h-full flex flex-col">
+                                        <div className="h-48 bg-slate-200 relative overflow-hidden">
+                                            <img src={post.image} alt={post.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+                                            <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors"></div>
                                         </div>
-                                        <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">{post.title}</h3>
-                                        <p className="text-slate-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                                        <span className="text-primary font-semibold group-hover:underline mt-auto">Read More &rarr;</span>
+                                        <div className="p-6 flex flex-col flex-grow">
+                                            <div className="text-sm text-slate-600 mb-2 font-semibold flex justify-between">
+                                                <span>{post.category}</span>
+                                                <span className="text-slate-400 font-normal">{post.date}</span>
+                                            </div>
+                                            <h3 className="text-xl font-bold text-primary mb-3 group-hover:text-secondary transition-colors">{post.title}</h3>
+                                            <p className="text-slate-600 mb-4 line-clamp-3">{post.excerpt}</p>
+                                            <span className="text-primary font-semibold group-hover:underline mt-auto">Read More &rarr;</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </MotionWrapper>
                         ))}
                     </div>
                 </div>

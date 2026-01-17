@@ -3,6 +3,8 @@ import Title from './components/Title';
 import { FaBalanceScale, FaBuilding, FaGavel, FaHandshake, FaLandmark, FaQuoteLeft, FaRegCalendarCheck, FaUsers } from 'react-icons/fa';
 import { BsTrophy } from 'react-icons/bs';
 import { IoMdDocument } from 'react-icons/io';
+import MotionWrapper from './components/MotionWrapper';
+import CountUp from './components/CountUp';
 
 export default function Home() {
   return (
@@ -78,34 +80,42 @@ export default function Home() {
       <section className="bg-primary py-20 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div className="p-6">
+            <MotionWrapper delay={0.1} className="p-6">
               <div className="flex justify-center mb-4">
                 <FaRegCalendarCheck className="text-5xl text-white" />
               </div>
-              <h3 className="text-4xl font-bold mb-2">25+</h3>
+              <h3 className="text-4xl font-bold mb-2">
+                <CountUp end={25} suffix="+" />
+              </h3>
               <p className="text-white/70 text-lg">Years Experience</p>
-            </div>
-            <div className="p-6">
+            </MotionWrapper>
+            <MotionWrapper delay={0.2} className="p-6">
               <div className="flex justify-center mb-4">
                 <FaGavel className="text-5xl text-white" />
               </div>
-              <h3 className="text-4xl font-bold mb-2">1500+</h3>
+              <h3 className="text-4xl font-bold mb-2">
+                <CountUp end={1500} suffix="+" />
+              </h3>
               <p className="text-white/70 text-lg">Cases Won</p>
-            </div>
-            <div className="p-6">
+            </MotionWrapper>
+            <MotionWrapper delay={0.3} className="p-6">
               <div className="flex justify-center mb-4">
                 <FaUsers className="text-5xl text-white" />
               </div>
-              <h3 className="text-4xl font-bold mb-2">2000+</h3>
+              <h3 className="text-4xl font-bold mb-2">
+                <CountUp end={2000} suffix="+" />
+              </h3>
               <p className="text-white/70 text-lg">Happy Clients</p>
-            </div>
-            <div className="p-6">
+            </MotionWrapper>
+            <MotionWrapper delay={0.4} className="p-6">
               <div className="flex justify-center mb-4">
                 <BsTrophy className="text-5xl text-white" />
               </div>
-              <h3 className="text-4xl font-bold mb-2">50+</h3>
+              <h3 className="text-4xl font-bold mb-2">
+                <CountUp end={50} suffix="+" />
+              </h3>
               <p className="text-white/70 text-lg">Awards Won</p>
-            </div>
+            </MotionWrapper>
           </div>
         </div>
       </section>
@@ -126,15 +136,17 @@ export default function Home() {
               { icon: <IoMdDocument />, title: "Estate Planning", desc: "Securing your legacy with wills, trusts, and estate administration." },
               { icon: <FaGavel />, title: "Criminal Defense", desc: "Protecting your rights with aggressive and strategic defense." },
             ].map((specialty, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow group border border-slate-100">
-                <div className="text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform duration-300 w-fit">
-                  {specialty.icon}
+              <MotionWrapper key={index} delay={index * 0.1}>
+                <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow group border border-slate-100 h-full">
+                  <div className="text-4xl text-secondary mb-6 group-hover:scale-110 transition-transform duration-300 w-fit">
+                    {specialty.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-primary">{specialty.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {specialty.desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-primary">{specialty.title}</h3>
-                <p className="text-slate-600 leading-relaxed">
-                  {specialty.desc}
-                </p>
-              </div>
+              </MotionWrapper>
             ))}
           </div>
         </div>
@@ -184,19 +196,21 @@ export default function Home() {
                 quote: "They handled my case with compassion and professionalism. I couldn't have asked for a better outcome."
               }
             ].map((testimonial, index) => (
-              <div key={index} className="bg-slate-50 p-8 rounded-2xl relative">
-                <FaQuoteLeft className="text-4xl text-gold/40 mb-6" />
-                <p className="text-slate-700 text-lg mb-6 italic">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl mr-4">
-                    {testimonial.name[0]}
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary">{testimonial.name}</h4>
-                    <p className="text-sm text-slate-500">{testimonial.role}</p>
+              <MotionWrapper key={index} delay={index * 0.1}>
+                <div className="bg-slate-50 p-8 rounded-2xl relative h-full">
+                  <FaQuoteLeft className="text-4xl text-gold/40 mb-6" />
+                  <p className="text-slate-700 text-lg mb-6 italic">"{testimonial.quote}"</p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl mr-4">
+                      {testimonial.name[0]}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-primary">{testimonial.name}</h4>
+                      <p className="text-sm text-slate-500">{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </MotionWrapper>
             ))}
           </div>
         </div>
